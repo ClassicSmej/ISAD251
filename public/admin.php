@@ -1,5 +1,9 @@
 <?php
-include_once('header.php')
+
+include_once'header.php';
+include_once '../src/model/dbContext.php';
+include_once '../src/model/product.php';
+
 ?>
 
 <body>
@@ -26,8 +30,22 @@ include_once('header.php')
 
             <div id="Products" class="w3-container admin w3-padding-48 w3-card">
                 <!-- ENTER PRODUCTS HERE -->
+                <select class="custom-select mr-sm-2 form-control" name="Products"
+                        <option value=""></option>
                 <?php
+                    $optionString = "";
 
+                    $db = new dbContext();
+                    $products = $db->Products();
+
+                    if($products)
+                    {
+                        foreach ($products as $product)
+                        {
+                            $optionString .= "<option value=".$product->ProductID().">".$product->Description()."</option>";
+                        }
+                    }
+                    echo $optionString;
                 ?>
 
             </div>
@@ -41,6 +59,5 @@ include_once('footer.php')
 ?>
 
     <script src="../assets/js/admin.js"></script>
-
 
 </body>

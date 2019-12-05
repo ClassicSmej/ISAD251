@@ -1,8 +1,8 @@
 <?php
 
-<include_once 'products.php';
+include_once 'product.php';
 
-class Repository
+class dbContext
 {
     private $db_server = 'Proj-mysql.uopnet.plymouth.ac.uk';
     private $dbUser = 'ISAD251_JWhite';
@@ -48,5 +48,26 @@ class Repository
         $resultSet = $statement->fetchAll(PDO::FETCH_ASSOC);
 
         return $resultSet;
+    }
+
+    public function Products()
+    {
+        $sql = "SELECT * FROM products";
+
+        $statement = $this->connection->prepare($sql);
+        $statement->execute();
+        $resultSet = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        $products = [];
+
+        if($resultSet)
+        {
+            foreach($resultSet as $row)
+            {
+                $product = new Product($row['ProductID'], $row['Description'], $row['Price'], $row['Category'], $row['StockNo']);
+                $products[] = $product;
+            }
+        }
+        return $products;
     }
 }

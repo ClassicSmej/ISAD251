@@ -30,4 +30,3 @@ function getAll($tablename)
 
     return $resultSet;
 }
-

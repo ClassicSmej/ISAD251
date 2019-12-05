@@ -1,43 +1,43 @@
 <?php
 
-class products
+class product
 {
-    private $ID;
+    private $productID;
     private $description;
     private $price;
     private $category;
     private $stockNo;
 
-    public function __construct($ID, $description, $price, $category, $stockNo)
+    public function __construct($productID, $description, $price, $category, $stockNo)
     {
-        $this->ProductID = $ID;
+        $this->ProductID = $productID;
         $this->Description = $description;
         $this->Price = $price;
         $this->Category = $category;
         $this->StockNo = $stockNo;
     }
 
-    public function ID()
+    public function getProductID()
     {
-        return $this->ID;
+        return $this->productID;
     }
 
-    public function Description()
+    public function getDescription()
     {
         return $this->description;
     }
 
-    public function Price()
+    public function getPrice()
     {
         return $this->price;
     }
 
-    public function Category()
+    public function getCategory()
     {
         return $this->category;
     }
 
-    public function StockNo()
+    public function getStockNo()
     {
         return $this->stockNo;
     }

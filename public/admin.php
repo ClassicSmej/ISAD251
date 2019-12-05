@@ -6,7 +6,7 @@ include_once '../src/model/product.php';
 
 ?>
 
-<body>
+<body xmlns="http://www.w3.org/1999/html">
 
 <div class="w3-light-grey w3-grayscale w3-large">
 
@@ -30,8 +30,8 @@ include_once '../src/model/product.php';
 
             <div id="Products" class="w3-container admin w3-padding-48 w3-card">
                 <!-- ENTER PRODUCTS HERE -->
-                <select class="custom-select mr-sm-2 form-control" name="Products"
-                        <option value=""></option>
+                <select class="custom-select mr-sm-2 form-control" name="Products">
+                    <option value="">---SELECT A PRODUCT---</option>
                 <?php
                     $optionString = "";
 
@@ -47,7 +47,7 @@ include_once '../src/model/product.php';
                     }
                     echo $optionString;
                 ?>
-
+                </select>
             </div>
         </div>
         <br>

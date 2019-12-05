@@ -52,7 +52,7 @@ class dbContext
 
     public function Products()
     {
-        $sql = "SELECT * FROM products";
+        $sql = "SELECT * FROM `products`";
 
         $statement = $this->connection->prepare($sql);
         $statement->execute();

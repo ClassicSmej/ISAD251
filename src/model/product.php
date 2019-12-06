@@ -8,13 +8,13 @@ class product
     private $category;
     private $stockNo;
 
-    public function __construct($productID, $description, $price, $category, $stockNo)
+    public function __construct($ProductID, $Description, $Price, $Category, $StockNo)
     {
-        $this->ProductID = $productID;
-        $this->Description = $description;
-        $this->Price = $price;
-        $this->Category = $category;
-        $this->StockNo = $stockNo;
+        $this->productID = $ProductID;
+        $this->description = $Description;
+        $this->price = $Price;
+        $this->category = $Category;
+        $this->stockNo = $StockNo;
     }
 
     public function getProductID()

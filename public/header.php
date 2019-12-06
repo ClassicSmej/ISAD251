@@ -28,7 +28,7 @@
             <a href="index.php" class="w3-button w3-block w3-black">MENU</a>
         </div>
         <div class="w3-col s3">
-            <a href="orders.php" class="w3-button w3-block w3-black">ORDERS</a>
+            <a href="orderHistory.php" class="w3-button w3-block w3-black">ORDERS</a>
         </div>
         <div class="w3-col s3">
             <a href="admin.php" class="w3-button w3-block w3-black">ADMIN</a>

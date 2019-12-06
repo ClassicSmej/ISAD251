@@ -7,13 +7,15 @@ class orderItems
     private $productID;
     private $quantity;
 
-    public function __construct($orderID, $productID, $quantity)
+    //Constructor
+    public function __construct($OrderID, $ProductID, $Quantity)
     {
-        $this->orderID = $orderID;
-        $this->productID = $productID;
-        $this->quantity = $quantity;
+        $this->orderID = $OrderID;
+        $this->productID = $ProductID;
+        $this->quantity = $Quantity;
     }
 
+    //Getters
     public function getOrderID()
     {
         return $this->orderID;

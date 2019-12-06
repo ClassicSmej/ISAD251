@@ -1,6 +1,9 @@
 <?php
-include_once('header.php')
+
+include_once'header.php';
+
 ?>
+
 <body>
 
 <div class="w3-light-grey w3-large">

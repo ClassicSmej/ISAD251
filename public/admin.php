@@ -1,12 +1,12 @@
 <?php
 
 include_once'header.php';
-include_once '../src/model/dbContext.php';
-include_once '../src/model/product.php';
+include_once'../src/model/dbContext.php';
+include_once'../src/model/product.php';
 
 ?>
 
-<body xmlns="http://www.w3.org/1999/html">
+<body>
 
 <div class="w3-light-grey w3-grayscale w3-large">
 
@@ -24,16 +24,23 @@ include_once '../src/model/product.php';
                 </a>
             </div>
 
-            <div id="Orders" class="w3-container admin w3-padding-48 w3-card">
+            <div id="Orders" class="w3-container admin w3-padding-48 w3-card w3-center">
                 <!-- ENTER ORDERS HERE -->
             </div>
 
-            <div id="Products" class="w3-container admin w3-padding-48 w3-card">
+            <div id="Products" class="w3-container admin w3-padding-48 w3-card w3-center">
                 <!-- ENTER PRODUCTS HERE -->
-                <select class="custom-select mr-sm-2 form-control" name="Products">
-                    <option value="">---SELECT A PRODUCT---</option>
-                <?php
-                    $optionString = "";
+                <table class="w3-table-all w3-centered">
+                    <tr>
+                        <th>Product ID</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Category</th>
+                        <th>Stock No.</th>
+                    </tr>
+
+                    <?php
+                    $productString = "";
 
                     $db = new dbContext();
                     $products = $db->Products();
@@ -42,12 +49,16 @@ include_once '../src/model/product.php';
                     {
                         foreach ($products as $product)
                         {
-                            $optionString .= "<option value=".$product->ProductID().">".$product->Description()."</option>";
+                            $productString .= "<tr>"."<td>".$product->getProductID()."</td>".
+                                "<td>".$product->getDescription()."</td>".
+                                "<td>".$product->getPrice()."</td>".
+                                "<td>".$product->getCategory()."</td>".
+                                "<td>".$product->getStockNo()."</td>";
                         }
                     }
-                    echo $optionString;
-                ?>
-                </select>
+                    echo $productString;
+                    ?>
+                </table>
             </div>
         </div>
         <br>
@@ -58,6 +69,6 @@ include_once '../src/model/product.php';
 include_once('footer.php')
 ?>
 
-    <script src="../assets/js/admin.js"></script>
+<script src="../assets/js/admin.js"></script>
 
 </body>

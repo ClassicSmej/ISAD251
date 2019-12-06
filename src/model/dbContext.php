@@ -1,6 +1,8 @@
 <?php
 
 include_once 'product.php';
+include_once 'orderItems.php';
+include_once 'orders.php';
 
 class dbContext
 {
@@ -11,6 +13,7 @@ class dbContext
     private $dataSourceName;
     private $connection;
 
+    //DB Connection
     public function __construct(PDO $connection = null)
     {
         $this->connection = $connection;
@@ -29,27 +32,7 @@ class dbContext
         }
     }
 
-    public function getAll($tableName)
-    {
-        $sql = "SELECT * FROM ";
-        switch ($tableName)
-        {
-            case "Products" : $sql = $sql." products";
-                break;
-            case "Customers" : $sql = $sql." orderitems";
-                break;
-            case "Orders" : $sql = $sql." orders";
-                break;
-        }
-
-        $statement = $this->connection->prepare($sql);
-        $statement->execute();
-
-        $resultSet = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-        return $resultSet;
-    }
-
+    //Products table
     public function Products()
     {
         $sql = "SELECT * FROM `products`";
@@ -64,10 +47,12 @@ class dbContext
         {
             foreach($resultSet as $row)
             {
-                $product = new Product($row['ProductID'], $row['Description'], $row['Price'], $row['Category'], $row['StockNo']);
+                $product = new product($row['ProductID'], $row['Description'], $row['Price'], $row['Category'], $row['StockNo']);
                 $products[] = $product;
             }
         }
         return $products;
     }
+
+
 }

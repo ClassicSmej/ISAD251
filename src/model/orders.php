@@ -6,12 +6,14 @@ class orders
     private $orderID;
     private $orderDate;
 
-    public function __construct($orderID, $orderDate)
+    //Constructors
+    public function __construct($OrderID, $OrderDate)
     {
-        $this->OrderID = $orderID;
-        $this->Date = $orderDate;
+        $this->orderID = $OrderID;
+        $this->orderDate = $OrderDate;
     }
 
+    //Getters
     public function getOrderID()
     {
         return $this->orderID;

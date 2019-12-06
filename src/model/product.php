@@ -3,14 +3,16 @@
 class product
 {
     private $productID;
+    private $name;
     private $description;
     private $price;
     private $category;
     private $stockNo;
 
-    public function __construct($ProductID, $Description, $Price, $Category, $StockNo)
+    public function __construct($ProductID, $Name, $Description, $Price, $Category, $StockNo)
     {
         $this->productID = $ProductID;
+        $this->name = $Name;
         $this->description = $Description;
         $this->price = $Price;
         $this->category = $Category;
@@ -20,6 +22,11 @@ class product
     public function getProductID()
     {
         return $this->productID;
+    }
+
+    public function getName()
+    {
+        return $this->name;
     }
 
     public function getDescription()

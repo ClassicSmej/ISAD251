@@ -1,6 +1,6 @@
 <?php
 
-include_once('header.php');
+include_once'header.php';
 
 ?>
 
@@ -27,33 +27,27 @@ include_once('header.php');
             </div>
 
             <div id="Drinks" class="w3-container menu w3-padding-48 w3-card">
-                <h5>Coffee
-                    <span class="w3-right w3-tag w3-dark-grey w3-round" id="price0">2.50</span></h5>
-                <p class="w3-text-grey" id="p0">Regular coffee
-                    <input type="button" value="ADD" class="btnAdd w3-round" onclick="btnAdd0_onClick()"/></p><br>
+                <!--DRINK MENU ITEMS-->
+                <?php
+                $productString = "";
 
-                <h5>Chocolato
-                    <span class="w3-right w3-tag w3-dark-grey w3-round" id="price1">2.50</span></h5>
-                <p class="w3-text-grey" id="p1">Chocolate espresso with milk
-                    <input type="button" value="ADD" class="btnAdd w3-round" onclick="btnAdd1_onClick()"/></p><br>
+                $db = new dbContext();
+                $products = $db->Products();
 
-                <h5>Corretto
-                    <span class="w3-right w3-tag w3-dark-grey w3-round" id="price2">2.50</span></h5>
-                <p class="w3-text-grey" id="p2">Whiskey and coffee
-                    <input type="button" value="ADD" class="btnAdd w3-round" onclick="btnAdd2_onClick()"/></p><br>
-
-                <h5>Iced tea
-                    <span class="w3-right w3-tag w3-dark-grey w3-round" id="price3">2.50</span></h5>
-                <p class="w3-text-grey" id="p3">Hot tea, except not hot
-                    <input type="button" value="ADD" class="btnAdd w3-round" onclick="btnAdd3_onClick()"/></p><br>
-
-                <h5>Soda
-                    <span class="w3-right w3-tag w3-dark-grey w3-round" id="price4">2.50</span></h5>
-                <p class="w3-text-grey" id="p4">Coke, Sprite, Fanta, etc.
-                    <input type="button" value="ADD" class="btnAdd w3-round" onclick="btnAdd4_onClick()"/></p>
+                if($products)
+                {
+                    foreach ($products as $product)
+                    {
+                        $productString .= "<h5>".$productString->getDescription().
+                    "<span class=\"w3-right w3-tag w3-dark-grey w3-round\">".$productString->getPrice()."</span>"."</h5>";
+                    }
+                }
+                echo $productString;
+                ?>
             </div>
 
             <div id="Eat" class="w3-container menu w3-padding-48 w3-card">
+                <!--FOOD MENU ITEMS-->
                 <h5>Coffee
                     <span class="w3-right w3-tag w3-dark-grey w3-round" id="price5">2.50</span></h5>
                 <p class="w3-text-grey" id="p5">Regular coffee
@@ -81,7 +75,7 @@ include_once('header.php');
             </div>
 
             <div id="Basket" class="w3-container menu w3-padding-48 w3-card w3-center">
-                <!--ADD BASKET ITEMS HERE-->
+                <!--BASKET ITEMS-->
                 <h3 style="text-align: center">There is currently no <br> items in your basket</h3>
                 <input class="checkout w3-round" type="button" value="CHECKOUT" onclick="btnCheckout_onClick()">
             </div>

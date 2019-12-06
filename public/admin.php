@@ -1,8 +1,6 @@
 <?php
 
 include_once'header.php';
-include_once'../src/model/dbContext.php';
-include_once'../src/model/product.php';
 
 ?>
 
@@ -25,11 +23,11 @@ include_once'../src/model/product.php';
             </div>
 
             <div id="Orders" class="w3-container admin w3-padding-48 w3-card w3-center">
-                <!-- ENTER ORDERS HERE -->
+                <!--ORDERS-->
             </div>
 
             <div id="Products" class="w3-container admin w3-padding-48 w3-card w3-center">
-                <!-- ENTER PRODUCTS HERE -->
+                <!--PRODUCTS-->
                 <table class="w3-table-all w3-centered">
                     <tr>
                         <th>Product ID</th>
@@ -53,7 +51,7 @@ include_once'../src/model/product.php';
                                 "<td>".$product->getDescription()."</td>".
                                 "<td>".$product->getPrice()."</td>".
                                 "<td>".$product->getCategory()."</td>".
-                                "<td>".$product->getStockNo()."</td>";
+                                "<td>".$product->getStockNo()."</td>"."</tr>";
                         }
                     }
                     echo $productString;

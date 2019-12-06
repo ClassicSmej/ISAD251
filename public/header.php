@@ -1,5 +1,8 @@
 <?php
 
+include_once'../src/model/dbContext.php';
+include_once'../src/model/product.php';
+
 ?>
 
 <!DOCTYPE html>

@@ -54,5 +54,27 @@ class dbContext
         return $products;
     }
 
+    //Order History View
+    public function orderHistory()
+    {
+        $sql = "SELECT * FROM `orderhistory`";
+
+        $statement = $this->connection->prepare($sql);
+        $statement->execute();
+        $resultSet = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        $history = [];
+
+        if($resultSet)
+        {
+            foreach($resultSet as $row)
+            {
+                $order = new product($row['OrderID'], $row['OrderDate'], $row['Description'], $row['Quantity'], $row['Category'], $row['TotalCost']);
+                $history[] = $order;
+            }
+        }
+        return $history;
+    }
+
 
 }

@@ -28,16 +28,17 @@ include_once'header.php';
                 <?php
                 $productString = "";
 
+                $i = 0; //Counter for unique id numbers
                 $db = new dbContext();
                 $products = $db->Products();
 
                 if($products)
                 {
-                    foreach ($products as $product)
-                    {
+                    foreach ($products as $product) {
+                        $i++;
                         $productString .= "<h5>".$product->getName().
-                    "<span class=\"w3-right w3-tag w3-dark-grey w3-round\">".$product->getPrice()."</span>"."</h5>".
-                        "<p class=\"w3-text-grey\">".$product->getDescription()."<input type=\"button\" value=\"ADD\" class=\"btnAdd w3-round\">"."</p>"."</br>";
+                    "<span class='w3-right w3-tag w3-dark-grey w3-round'>".$product->getPrice()."</span>"."</h5>".
+                        "<p class='w3-text-grey' id='p$i'>".$product->getDescription()."<input type='button' value='ADD' id='btnAdd$i' onclick='btnAdd$i()' class='btnAdd w3-round'>"."</p>"."</br>";
                     }
                 }
                 echo $productString;
@@ -46,7 +47,17 @@ include_once'header.php';
 
             <div id="Basket" class="w3-container menu w3-padding-48 w3-card w3-center">
                 <!--BASKET ITEMS-->
-                <h3 style="text-align: center">There is currently no <br> items in your basket</h3>
+                <div class="cart-row">
+                    <span class="cart-item cart-header cart-column">ITEM</span>
+                    <span class="cart-price cart-header cart-column">PRICE</span>
+                    <span class="cart-quantity cart-header cart-column">QUANTITY</span>
+                </div>
+                <div class="cart-items">
+                </div>
+                <div class="cart-total">
+                    <strong class="cart-total-title">Total:</strong>
+                    <span class="cart-total-price">£0</span>
+                </div>
                 <input class="checkout w3-round" type="button" value="CHECKOUT" onclick="btnCheckout_onClick()">
             </div>
             <br>

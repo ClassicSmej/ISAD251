@@ -9,7 +9,7 @@ include_once'header.php';
 <div class="w3-light-grey w3-grayscale w3-large">
 
     <div class="w3-container" id="admin">
-        <div class="w3-content" style="max-width:100px; min-width: 1000px">
+        <div class="w3-content" style="max-width:700px;">
 
             <h3 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">ADMIN</span></h3>
 
@@ -32,7 +32,6 @@ include_once'header.php';
                     <tr>
                         <th>Product ID</th>
                         <th>Name</th>
-                        <th>Description</th>
                         <th>Price</th>
                         <th>Category</th>
                         <th>Stock No.</th>
@@ -50,7 +49,6 @@ include_once'header.php';
                         {
                             $productString .= "<tr>"."<td>".$product->getProductID()."</td>".
                                 "<td>".$product->getName()."</td>".
-                                "<td>".$product->getDescription()."</td>".
                                 "<td>".$product->getPrice()."</td>".
                                 "<td>".$product->getCategory()."</td>".
                                 "<td>".$product->getStockNo()."</td>"."</tr>";

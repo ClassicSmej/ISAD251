@@ -36,8 +36,8 @@ include_once'header.php';
                 {
                     foreach ($products as $product) {
                         $i++;
-                        $productString .= "<h5>".$product->getName().
-                    "<span class='w3-right w3-tag w3-dark-grey w3-round'>".$product->getPrice()."</span>"."</h5>".
+                        $productString .= "<h5 id='item'>".$product->getName().
+                    "<span class='w3-right w3-tag w3-dark-grey w3-round' id='price'>".$product->getPrice()."</span>"."</h5>".
                         "<p class='w3-text-grey' id='p$i'>".$product->getDescription()."<input type='button' value='ADD' id='btnAdd$i' onclick='btnAdd$i()' class='btnAdd w3-round'>"."</p>"."</br>";
                     }
                 }

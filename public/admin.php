@@ -47,7 +47,7 @@ include_once'header.php';
                     {
                         foreach ($products as $product)
                         {
-                            $productString .= "<tr>"."<td>".$product->getProductID()."</td>".
+                            $productString .= "<tr><td>".$product->getProductID()."</td>".
                                 "<td>".$product->getName()."</td>".
                                 "<td>".$product->getPrice()."</td>".
                                 "<td>".$product->getCategory()."</td>".

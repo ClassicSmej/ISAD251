@@ -15,3 +15,8 @@ function openMenu(evt, menuName) {
 document.getElementById("myLink").click();
 
 //Shopping Basket
+
+document.getElementById("btnAdd").addEventListener("click", function() {
+    alert("Hello World!");
+});
+

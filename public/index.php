@@ -1,7 +1,5 @@
 <?php
-
 include_once'header.php';
-
 ?>
 
 <body>
@@ -27,17 +25,15 @@ include_once'header.php';
             <div id="Menu" class="w3-container menu w3-padding-48 w3-card">
                 <?php
                 $productString = "";
-
                 $i = 0; //Counter for unique id numbers
                 $db = new dbContext();
                 $products = $db->Products();
-
                 if($products)
                 {
                     foreach ($products as $product) {
                         $i++;
                         $productString .= "<div class='item'><h5 class='product-details'>".$product->getName().
-                    "</h5><span class='product-price w3-right w3-tag w3-dark-grey w3-round'>".$product->getPrice()."</span>
+                            "</h5><span class='product-price w3-right w3-tag w3-dark-grey w3-round'>".$product->getPrice()."</span>
                             <p class='w3-text-grey' >".$product->getDescription()."<input type='button' value='ADD' class='btn-add w3-round'></p><br></div>";
                     }
                 }
@@ -59,7 +55,7 @@ include_once'header.php';
                     <span class="basket-total-price">£0</span>
                 </div>
                 <br>
-                <input class="checkout w3-round" type="button" value="CHECKOUT" onclick="btnCheckout_onClick()">
+                <input class="btn-checkout w3-round" type="button" value="CHECKOUT" onclick="btnCheckout_onClick()">
             </div>
             <br>
         </div>
@@ -78,16 +74,15 @@ include_once('footer.php')
 
     function onLoad() {
         var addButtons = document.getElementsByClassName('btn-add'); //get add button
-            for (var i = 0; i < addButtons.length; i++){ //loop through all buttons and put in array
-                var clicked = addButtons[i];
-                clicked.addEventListener('click', clickedItem); //add event listener
-            }
-
+        for (var i = 0; i < addButtons.length; i++){ //loop through all buttons and put in array
+            var clicked = addButtons[i];
+            clicked.addEventListener('click', clickedItem); //add event listener
+        }
         var removeButtons = document.getElementsByClassName('btn-remove'); //get remove button
-            for (var i = 0; i < removeButtons.length; i++) { //loop through all buttons and put in array
-                var clicked = removeButtons[i]; //get clicked button id
-                clicked.addEventListener('click', removeItem); //add event listener
-            }
+        for (var j = 0; j < removeButtons.length; j++) { //loop through all buttons and put in array
+            var clicked = removeButtons[j]; //get clicked button id
+            clicked.addEventListener('click', removeItem); //add event listener
+        }
     }
 
     //get data of clicked item
@@ -103,12 +98,12 @@ include_once('footer.php')
     function addItem(product, price) {
         var basketRow = document.createElement('div'); //create new div for the basket
         var basketItems = document.getElementsByClassName('basket-items')[0];
-         // add in new html elements to basket when item added
+        // add in new html elements to basket when item added
         basketRow.innerHTML = `
                 <div class="basket-row basket-column">
                     <span class="basket-item basket-column">${product}</span>
                     <span class="basket-price basket-column">${price}</span>
-                    <span class="basket-quantity basket-column"><input class="txtQuantity" type="number" value="1"></span>
+                    <span class="basket-quantity basket-column"><input class="txt-quantity" type="number" value="1"></span>
                     <span class='remove'><input type="button" value="Remove" class="btn-remove w3-round"></span>
                 </div><br>`; // add in new html elements to basket when item added
         basketItems.append(basketRow); //append item to a new div
@@ -119,7 +114,6 @@ include_once('footer.php')
         var clicked = event.target; //get clicked button id
         clicked.parentElement.parentElement.remove();
     }
-
 </script>
 
 </body>

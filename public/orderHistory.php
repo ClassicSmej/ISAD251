@@ -20,8 +20,8 @@ include_once'header.php';
 
             <div id="Orders" class="w3-container w3-padding-48 w3-card w3-center" style="text-align: center">
                 <h4>ENTER YOUR ORDER NUMBER</h4>
-                <input class="orderNo w3-round w3-center" type="text" placeholder="Order No #">
-                <input class="submit w3-round" type="button" value="SUBMIT">
+                <input class="order-num w3-round w3-center" type="text" placeholder="Order No #">
+                <input class="btn-submit w3-round" type="button" value="SUBMIT">
             </div>
             <br>
         </div>

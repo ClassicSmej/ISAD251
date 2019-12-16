@@ -16,23 +16,17 @@ function openMenu(evt, menuName) {
 }
 document.getElementById("myLink").click();
 
-//Shopping Basket
-
-document.getElementById("btnAdd").addEventListener("click", function() {
-    alert("Hello World!");
-});
-
 function onLoad() {
     var addButtons = document.getElementsByClassName('btn-add'); //get add button
     for (var i = 0; i < addButtons.length; i++){ //loop through all buttons and put in array
-        var clicked = addButtons[i];
-        clicked.addEventListener('click', clickedItem); //add event listener
+        var add = addButtons[i];
+        add.addEventListener('click', clickedItem); //add event listener
     }
 
     var removeButtons = document.getElementsByClassName('btn-remove'); //get remove button
-    for (var i = 0; i < removeButtons.length; i++) { //loop through all buttons and put in array
-        var clicked = removeButtons[i]; //get clicked button id
-        clicked.addEventListener('click', removeItem); //add event listener
+    for (var j = 0; j < removeButtons.length; j++) { //loop through all buttons and put in array
+        var remove = removeButtons[j]; //get clicked button id
+        removelicked.addEventListener('click', removeItem); //add event listener
     }
 }
 
@@ -52,16 +46,16 @@ function addItem(product, price) {
     // add in new html elements to basket when item added
     basketRow.innerHTML = `
                 <div class="basket-row basket-column">
-                    <span class="basket-item basket-column">${product}</span>
-                    <span class="basket-price basket-column">${price}</span>
-                    <span class="basket-quantity basket-column"><input class="txtQuantity" type="number" value="1"></span>
-                    <span class='remove'><input type="button" value="Remove" class="btn-remove w3-round"></span>
-                </div><br>`; // add in new html elements to basket when item added
+                    <span class="basket-item w3-third">${product}</span>
+                    <span class="basket-price w3-third">${price}</span>
+                    <span class="basket-quantity w3-third"><input class="txt-quantity" type="number" value="1"> <input type="button" value="Remove" class="btn-remove w3-round"></span>
+                </div><br><br>`; // add in new html elements to basket when item added
     basketItems.append(basketRow); //append item to a new div
 }
 
 //removing items from basket
 function removeItem(event) {
+    console.log('Clicked');
     var clicked = event.target; //get clicked button id
-    clicked.parentElement.parentElement.remove();
+    clicked.parentElement.remove();
 }

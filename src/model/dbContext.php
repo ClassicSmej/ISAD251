@@ -75,6 +75,4 @@ class dbContext
         }
         return $history;
     }
-
-
 }

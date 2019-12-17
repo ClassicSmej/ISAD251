@@ -36,9 +36,9 @@ include_once'header.php';
                 {
                     foreach ($products as $product) {
                         $i++;
-                        $productString .= "<div class='item'><h5 class='product-details'>".$product->getName().
+                        $productString .= "<div class='item'><h5 class='products'>".$product->getName().
                     "<input type='button' value='ADD' class='btn-add w3-round'></h5><p class='description w3-text-grey'>
-                        <span class='product-price w3-right w3-tag w3-dark-grey w3-round'>".$product->getPrice()."</span>".$product->getDescription()."</p><br></div>";
+                        <span class='price w3-right w3-tag w3-dark-grey w3-round'>".$product->getPrice()."</span>".$product->getDescription()."</p><br></div>";
                     }
                 }
                 echo $productString;
@@ -47,16 +47,16 @@ include_once'header.php';
 
             <!--BASKET ITEMS-->
             <div id="Basket" class="basket w3-container menu w3-padding-48 w3-card w3-center">
-                <div class="basket-row">
-                    <b><span class="item-header w3-third w3-border-bottom w3-border-black">Item</span></b>
+                <div>
+                    <b><span class="product-header w3-third w3-border-bottom w3-border-black">Item</span></b>
                     <b><span class="price-header w3-third w3-border-bottom w3-border-black">Price</span></b>
                     <b><span class="quantity-header w3-third w3-border-bottom w3-border-black">Quantity</span></b><br><br>
                 </div>
                 <div class="basket-items">
                 </div>
-                <div class="basket-total">
+                <div class="total">
                     <b>Total:</b>
-                    <span class="basket-total-price">£0</span>
+                    <span class="total-price">£0</span>
                 </div>
                 <br>
                 <input class="btn-checkout w3-round" type="button" value="CHECKOUT" onclick="btnCheckout_onClick()">

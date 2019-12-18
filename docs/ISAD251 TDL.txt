@@ -1,0 +1,7 @@
+--- ISAD251 TDL ---
+- Push basket to database
+- Get orders from database (orders & admin orders)
+- SQL trigger, stored procedures etc.
+- Create an API
+- Notification bubble for basket
+- Various UI tweaks

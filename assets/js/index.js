@@ -58,7 +58,7 @@ function addItem(product, price) {
     basket.append(newitem); //append item to a new div
     newitem.getElementsByClassName('btn-remove')[0].addEventListener('click', removeItem); //add event listener to each remove button
     newitem.getElementsByClassName('txt-quantity')[0].addEventListener('change', quantityChanged); //add event listener to quantity box
-    updateTotal(); //update total
+    updateTotal();
 }
 
 //removing items from basket

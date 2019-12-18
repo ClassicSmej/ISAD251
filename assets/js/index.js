@@ -38,19 +38,26 @@ function clickedItem(event) {
 
 //add item to basket
 function addItem(product, price) {
-    var item = document.createElement('div'); //create new div for the basket
-    item.classList.add('item'); //give new div class name
+    var newitem = document.createElement('div'); //create new div for the basket
+    newitem.classList.add('item'); //give new div class name
     var basket = document.getElementsByClassName('basket-items')[0]; //get current basket - will be empty on load
+    var item = document.getElementsByClassName('product');
+    for (var i = 0; i < item.length; i++) { //loop though basket
+        if (item[i].innerText === product) { //check if item is already in basket
+            alert('This item is already in your basket'); //if true; don't add & alert user
+            return
+        }
+    }
     // add in new html elements to basket when item added
-    item.innerHTML = `
+    newitem.innerHTML = `
                 <div class="product">
                     <span class="product w3-third">${product}</span>
-                    <span class="price w3-third">${price}</span>
+                    <span class="item-price w3-third">${price}</span>
                     <span class="quantity w3-third"><input class="txt-quantity" type="number" value="1"> <input type="button" value="Remove" class="btn-remove w3-round"></span>
                 </div><br><br>`;
-    basket.append(item); //append item to a new div
-    item.getElementsByClassName('btn-remove')[0].addEventListener('click', removeItem); //add event listener to each remove button
-    item.getElementsByClassName('txt-quantity')[0].addEventListener('change', quantityChanged); //add event listener to quantity box
+    basket.append(newitem); //append item to a new div
+    newitem.getElementsByClassName('btn-remove')[0].addEventListener('click', removeItem); //add event listener to each remove button
+    newitem.getElementsByClassName('txt-quantity')[0].addEventListener('change', quantityChanged); //add event listener to quantity box
     updateTotal(); //update total
 }
 
@@ -58,27 +65,28 @@ function addItem(product, price) {
 function removeItem(event) {
     var clicked = event.target; //get clicked button id
     clicked.parentElement.parentElement.parentElement.remove(); //remove item div from basket
+    updateTotal();
 }
 
 function quantityChanged(event) {
     var input = event.target;
-
     if (input.value <= 0) { //if input is less than zero
         input.value = 1; //prevent negative quantities
     }
     updateTotal();
 }
 
+//update basket total after each update (e.g. adding, removing or increasing)
 function updateTotal() {
     var basket = document.getElementsByClassName('basket-items')[0]; //get basket
-    var items = basket.document.getElementsByClassName('item'); //get all basket items
-    var total = 0;
-    for (var i = 0; 1 < items.length; i++){ //loop through each product in basket
-        var item = items[i]; //get each item from basket
-        var price = parseFloat(item.getElementsByClassName('price')[0].innerText.replace('£', '')); //get price of product
-        var quantity = item.getElementsByClassName('txt-quantity')[0].value; //get quantity of product
-        total = total + (price * quantity);
+    var items = basket.getElementsByClassName('item'); //get all basket items
+    var total = 0; //declare total
+    for (var i = 0; i < items.length; i++){ //loop through each product in basket
+        var products = items[i]; //get each item from basket
+        var price = parseFloat(products.getElementsByClassName('item-price')[0].innerText); //get price of product and convert to a float
+        var quantity = products.getElementsByClassName('txt-quantity')[0].value; //get quantity of product
+        total = total + (price * quantity); //calculate total
     }
-    total = Math.round(total * 100) / 100;
-    document.getElementsByClassName('total-price')[0].innerText = '£' + total;
+    total = Math.round(total * 100) / 100; //round to 2 decimal places
+    document.getElementsByClassName('total-price')[0].innerText = '£' + total; //display total in html
 }

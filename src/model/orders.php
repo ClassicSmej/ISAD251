@@ -22,4 +22,17 @@ class orders
     {
         return $this->orderDate;
     }
+
+    //Setters
+    public function setOrderID($orderID)
+    {
+        $this->orderID = $orderID;
+    }
+
+    public function setOrderDate($orderDate)
+    {
+        $this->orderDate = $orderDate;
+    }
+
+
 }

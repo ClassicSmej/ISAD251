@@ -1,6 +1,7 @@
 <?php
 
 include_once'header.php';
+include_once '../src/controller/basketController.php';
 
 ?>
 
@@ -57,7 +58,7 @@ include_once'header.php';
                     <span class="total-price"></span>
                 </div>
                 <br>
-                <input class="btn-checkout w3-round" type="button" value="CHECKOUT" onclick="btnCheckout_onClick()">
+                <input class="btn-checkout w3-round" type="button" value="CHECKOUT">
             </div>
             <br>
         </div>

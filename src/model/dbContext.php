@@ -54,25 +54,48 @@ class dbContext
         return $products;
     }
 
-    //Order History View
-    public function orderHistory()
+    //Order Items Table
+    public function orderItems()
     {
-        $sql = "SELECT * FROM `orderhistory`";
+        $sql = "SELECT * FROM `orderitems`";
 
         $statement = $this->connection->prepare($sql);
         $statement->execute();
         $resultSet = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-        $history = [];
+        $orderItems = [];
 
         if($resultSet)
         {
             foreach($resultSet as $row)
             {
-                $order = new product($row['OrderID'], $row['OrderDate'], $row['Description'], $row['Quantity'], $row['Category'], $row['TotalCost']);
-                $history[] = $order;
+                $order = new orderItems($row['ItemNo.'], $row['OrderID'], $row['Quantity'], $row['ProductID']);
+                $orderItems[] = $order;
             }
         }
-        return $history;
+        return $orderItems;
     }
+
+    //Orders Table
+    public function Orders()
+    {
+        $sql = "SELECT * FROM `orders`";
+
+        $statement = $this->connection->prepare($sql);
+        $statement->execute();
+        $resultSet = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        $orders = [];
+
+        if($resultSet)
+        {
+            foreach($resultSet as $row)
+            {
+                $order = new orders($row['OrderID.'], $row['OrderDate']);
+                $orders[] = $order;
+            }
+        }
+        return $orders;
+    }
+
 }

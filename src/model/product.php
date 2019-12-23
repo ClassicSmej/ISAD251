@@ -48,4 +48,38 @@ class product
     {
         return $this->stockNo;
     }
+
+    //Setters
+    function setProductID($productID)
+    {
+        $this->productID = $productID;
+    }
+
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    public function setPrice($price)
+    {
+        $this->price = $price;
+    }
+
+    public function setCategory($category)
+    {
+        $this->category = $category;
+    }
+
+
+    public function setStockNo($stockNo)
+    {
+        $this->stockNo = $stockNo;
+    }
+
+
 }

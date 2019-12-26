@@ -14,8 +14,8 @@ function openMenu(evt, menuName) {
 }
 document.getElementById("myLink").click();
 
-//Removing item from sale
-var removeButtons = document.getElementsByClassName('btn-remove'); //get add button
+//removing item from sale
+var removeButtons = document.getElementsByClassName('btn-remove'); //get remove buttons
 for (var i = 0; i < removeButtons.length; i++){ //loop through all buttons
     var remove = removeButtons[i]; //put in array
     remove.addEventListener('click', removeItem); //add event listener
@@ -25,8 +25,3 @@ function removeItem(event) {
     var clicked = event.target; //get clicked button id
     clicked.parentElement.parentElement.remove(); //remove item div from basket
 }
-
-function btnRemove_onClick(){
-    removeItem();
-}
-

@@ -10,7 +10,7 @@ include_once'header.php';
 
     <!-- Orders Container -->
     <div class="w3-container" id="orders">
-        <div class="w3-content" style="max-width:700px">
+        <div class="w3-content" style="max-width:800px">
 
             <h3 class="w3-center w3-padding-48"><span class="w3-tag w3-black">VIEW ORDERS</span></h3>
 

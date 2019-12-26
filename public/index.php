@@ -11,7 +11,7 @@ include_once '../src/controller/basketController.php';
 
     <!-- CONTAINER -->
     <div class="w3-container" id="menu">
-        <div class="w3-content" style="max-width:700px">
+        <div class="w3-content" style="max-width:800px">
 
             <h3 class="w3-center w3-padding-48"><span class="w3-tag w3-black">MENU</span></h3>
 

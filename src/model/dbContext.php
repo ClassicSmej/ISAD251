@@ -26,8 +26,7 @@ class dbContext
                     PDO::ERRMODE_EXCEPTION
                 );
             }
-        }catch (PDOException $err)
-        {
+        } catch (PDOException $err) {
             echo 'Connection failed: ', $err->getMessage();
         }
     }
@@ -43,10 +42,8 @@ class dbContext
 
         $products = [];
 
-        if($resultSet)
-        {
-            foreach($resultSet as $row)
-            {
+        if ($resultSet) {
+            foreach ($resultSet as $row) {
                 $product = new product($row['ProductID'], $row['Name'], $row['Description'], $row['Price'], $row['Category'], $row['StockNo']);
                 $products[] = $product;
             }
@@ -65,10 +62,8 @@ class dbContext
 
         $orderItems = [];
 
-        if($resultSet)
-        {
-            foreach($resultSet as $row)
-            {
+        if ($resultSet) {
+            foreach ($resultSet as $row) {
                 $order = new orderItems($row['ItemNo.'], $row['OrderID'], $row['Quantity'], $row['ProductID']);
                 $orderItems[] = $order;
             }
@@ -87,10 +82,8 @@ class dbContext
 
         $orders = [];
 
-        if($resultSet)
-        {
-            foreach($resultSet as $row)
-            {
+        if ($resultSet) {
+            foreach ($resultSet as $row) {
                 $order = new orders($row['OrderID.'], $row['OrderDate']);
                 $orders[] = $order;
             }
@@ -98,4 +91,23 @@ class dbContext
         return $orders;
     }
 
+    //Order Details View
+    public function orderDetails()
+    {
+        $sql = "SELECT * FROM orderDetails";
+
+        $statement = $this->connection->prepare($sql);
+        $statement->execute();
+        $resultSet = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        $details= [];
+
+        if ($resultSet) {
+            foreach ($resultSet as $row) {
+                $order = new $details($row['OrderID.'], $row['OrderDate'], $row['Description'], $row['Quantity'], $row['Category'], $row['TotalCost']);
+                $details[] = $order;
+            }
+        }
+        return $details;
+    }
 }

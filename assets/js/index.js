@@ -53,7 +53,7 @@ function addItem(product, price) {
                 <div class="product">
                     <span class="product w3-third">${product}</span>
                     <span class="item-price w3-third">${price}</span>
-                    <span class="quantity w3-third"><input class="txt-quantity" type="number" value="1"> <input type="button" value="REMOVE" class="btn-remove w3-round"></span>
+                    <span class="quantity w3-third"><input class="txt-quantity" type="number" value="1"><button type='button' class='btn-remove w3-round'><span class=\"fa fa-times-circle\"></span></button></span>
                 </div><br><br>`;
     basket.append(newitem); //append item to a new div
     newitem.getElementsByClassName('btn-remove')[0].addEventListener('click', removeItem); //add event listener to each remove button

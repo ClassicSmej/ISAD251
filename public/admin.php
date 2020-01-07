@@ -38,6 +38,7 @@ session_start();
                     <th>Price</th>
                     <th>Category</th>
                     <th>Status</th>
+                    <th>Edit</th>
                     <th>Remove/Add</th>
                 </tr>
 
@@ -83,12 +84,12 @@ session_start();
                             }
                     }
 
-                    $productString .= "<form action='dbFunctions.php' method='post'><tr class='product'><td class='ID'></td>
+                    $productString .= "<form action='dbFunctions.php' method='post'><tr class='product'><td></td>
                                 <td class='name'><input class='txt' type='text' name='NAME'></td>
                                 <td class='description'><input class='txt' type='text' name='DESCRIPTION'></td>
                                 <td class='price'><input class='txt' type='text' name='PRICE'></td>
                                 <td class='category'><select class='txt' name='CATEGORY'><option>Drink</option><option>Food</option></td>
-                                <td class='status'><select class='txt' name='STATUS'><option>On Sale</option><option>Not on Sale</option></td>
+                                <td class='status'><select class='txt' name='STATUS'><option>On Sale</option><option>Not on Sale</option></td><td></td>
                                 <td><button type='submit' class='btn-add w3-round'><span class=\"fa fa-plus-square\"></span></button></td></tr>";
                 }
                 echo $productString;

@@ -11,7 +11,6 @@ class dbContext
     private $dbPassword = 'ISAD251_22201429';
     private $dbDatabase = 'ISAD251_jwhite';
     private $dataSourceName;
-    private $connection;
 
     //DB Connection
     public function __construct(PDO $connection = null)
@@ -44,7 +43,7 @@ class dbContext
 
         if ($resultSet) {
             foreach ($resultSet as $row) {
-                $product = new product($row['ProductID'], $row['Name'], $row['Description'], $row['Price'], $row['Category'], $row['StockNo']);
+                $product = new product($row['ProductID'], $row['Name'], $row['Description'], $row['Price'], $row['Category'], $row['Status']);
                 $products[] = $product;
             }
         }
@@ -110,4 +109,8 @@ class dbContext
         }
         return $details;
     }
+
+
+
 }
+

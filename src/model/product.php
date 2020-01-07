@@ -7,16 +7,16 @@ class product
     private $description;
     private $price;
     private $category;
-    private $stockNo;
+    private $status;
 
-    public function __construct($ProductID, $Name, $Description, $Price, $Category, $StockNo)
+    public function __construct($ProductID, $Name, $Description, $Price, $Category, $status)
     {
         $this->productID = $ProductID;
         $this->name = $Name;
         $this->description = $Description;
         $this->price = $Price;
         $this->category = $Category;
-        $this->stockNo = $StockNo;
+        $this->status = $status;
     }
 
     public function getProductID()
@@ -44,9 +44,9 @@ class product
         return $this->category;
     }
 
-    public function getStockNo()
+    public function getStatus()
     {
-        return $this->stockNo;
+        return $this->status;
     }
 
     //Setters
@@ -75,11 +75,8 @@ class product
         $this->category = $category;
     }
 
-
-    public function setStockNo($stockNo)
+    public function setStatus($status)
     {
-        $this->stockNo = $stockNo;
+        $this->status = $status;
     }
-
-
 }

@@ -35,9 +35,11 @@ include_once '../src/controller/basketController.php';
                 if($products)
                 {
                     foreach ($products as $product) {
+                        if ($product->getStatus() == 'On Sale'){
                         $productString .= "<div class='item'><h5 class='products'>".$product->getName().
-                    "<input type='button' value='ADD' class='btn-add w3-round'></h5><p class='description w3-text-grey'>
+                    "<button class='btn-add w3-round w3-right' type='button'>ADD <span class=\"fa fa-plus-square\"></span></button></h5><p class='description w3-text-grey'>
                         <span class='price w3-right w3-tag w3-dark-grey w3-round'>".$product->getPrice()."</span>".$product->getDescription()."</p><br></div>";
+                        }
                     }
                 }
                 echo $productString;

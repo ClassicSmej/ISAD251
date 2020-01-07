@@ -1,6 +1,7 @@
 <?php
 
 include_once'header.php';
+session_start();
 
 ?>
 
@@ -9,7 +10,7 @@ include_once'header.php';
 <div class="w3-light-grey w3-large">
 
     <div class="w3-container" id="admin">
-        <div class="w3-content" style="min-width: 1000px; max-width: 1000px"">
+        <div class="w3-content" style="min-width: 1250px; max-width: 1250px"">
 
         <h3 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">ADMIN</span></h3>
 
@@ -33,10 +34,11 @@ include_once'header.php';
                 <tr>
                     <th>Product ID</th>
                     <th>Name</th>
+                    <th>Description</th>
                     <th>Price</th>
                     <th>Category</th>
-                    <th>Stock No.</th>
-                    <th>Remove Item</th>
+                    <th>Status</th>
+                    <th>Remove/Add</th>
                 </tr>
 
                 <?php
@@ -50,10 +52,12 @@ include_once'header.php';
                     foreach ($products as $product)
                     {
                         //product table variables
-                        $ProductID = $product->getProductID();
-                        $Name = $product->getName();
+                        $productID = $product->getProductID();
+                        $name = $product->getName();
+                        $description = $product->getDescription();
                         $price = $product->getPrice();
-                        $StockNo = $product->getStockNo();
+                        $status = $product->getStatus();
+
                         if ($product->getCategory() == 'Drink')
                         {
                             $selectedCategory = "Drink";
@@ -64,19 +68,32 @@ include_once'header.php';
                         }
 
                         //HTML for products table
-                        $productString .= "<tr class='products-table'><td class='ID'>".$ProductID."</td>".
-                            "<td class='name'><input class='txt' type='text' value='".$Name."'></td>".
-                            "<td class='price'><input class='txt' type='text' value='".$price."'></td>".
-                            "<td class='category'><select class='txt'><option>$selectedCategory</option><option>$category</option></td>".
-                            "<td class='stockNo'><input class='txt' type='text' value='".$StockNo."'></td>".
-                            "<td><input type='button' value='Remove' class='btn-remove w3-round'></td></tr>";
+                        $productString .= "<tr class='product'><td class='ID'>".$productID."</td>
+                            <td class='name'><input class='txt' type='text' value='".$name."'></td>
+                            <td class='description'><input class='txt' type='text' value='".$description."'></td>
+                            <td class='price'><input class='txt' type='text' value='".$price."'></td>
+                            <td class='category'><select class='txt'><option>$selectedCategory</option><option>$category</option></td>
+                            <td class='status'>".$status."</td>";
+
+                            if ($product->getStatus() == 'On Sale') {
+                                $productString .= "<td><form action='dbFunctions.php' method='post'><button type='submit' value='".$productID."' name='REMOVE' class='btn-remove w3-round'><span class=\"fa fa-times-circle\"></span></button></form></td>";
+                            } else {
+                                    $productString .= "<td><form action='dbFunctions.php' method='post'><button type='submit' value='".$productID."' name='PUSH' class='btn-add w3-round'><span class=\"fa fa-plus-square\"></span></button></form>
+                                        <form action='dbFunctions.php' method='post'><button type='submit' value='".$productID."' name='EDIT' class='btn-edit w3-round'><span class=\"fa fa-edit\"></span></button></form></td>";
+                            }
                     }
+
+                    $productString .= "<tr class='product'><td class='ID'><input class='txt' type='text' value='' name='ID'></td>
+                                <td class='name'><input class='txt' type='text' value='' name='NAME'></td>
+                                <td class='description'><input class='txt' type='text' value='' name='DESCRIPTION'></td>
+                                <td class='price'><input class='txt' type='text' value='' name='PRICE'></td>
+                                <td class='category'><select class='txt' name='CATEGORY'><option>Drink</option><option>Food</option></td>
+                                <td class='status'><select class='txt' name='STATUS'><option>On Sale</option><option>Not on Sale</option></td>
+                                <td><form action='dbFunctions.php' method='post'><button type='submit' name='NEW' class='btn-add w3-round'><span class=\"fa fa-plus-square\"></span></button></form></td></tr>";
                 }
                 echo $productString;
                 ?>
             </table>
-            <br>
-            <input type="button" value="Submit Changes" class="btn-submit w3-round">
         </div>
     </div>
     <br>
@@ -86,6 +103,22 @@ include_once'header.php';
 include_once('footer.php')
 ?>
 
-<script src="../assets/js/admin.js"></script>
+<script>
+    //Tabbed Menu - W3 Schools
+    function openMenu(evt, menuName) {
+        var i, x, tablinks;
+        x = document.getElementsByClassName("admin");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablink");
+        for (i = 0; i < x.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" w3-dark-grey", "");
+        }
+        document.getElementById(menuName).style.display = "block";
+        evt.currentTarget.firstElementChild.className += " w3-dark-grey";
+    }
+    document.getElementById("myLink").click();
+</script>
 
 </body>

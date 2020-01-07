@@ -13,15 +13,6 @@ body, html {
     display: none;
 }
 
-.btn-add {
-    width: 65px;
-    background-color: #3CB371;
-    border-color: #3CB371;
-    color: white;
-    padding: 2px 2px;
-    float: right;
-}
-
 .btn-submit {
     width: 250px;
     background-color: #3CB371;
@@ -38,17 +29,35 @@ body, html {
     padding: 2px 2px;
 }
 
-.txt-quantity {
-    width: 60px;
-    text-align: center;
+.btn-add {
+    width: 75px;
+    background-color: #3CB371;
+    border-color: #3CB371;
+    color: white;
+    padding: 2px 2px;
 }
 
 .btn-remove {
-    width: 90px;
+    width: 75px;
     background-color: red;
     border-color: red;
     color: white;
     padding: 2px 2px;
+    display:inline-block;
+}
+
+.btn-edit {
+    width: 75px;
+    background-color: orange;
+    border-color: orange;
+    color: white;
+    padding: 2px 2px;
+    display:inline-block;
+}
+
+.txt-quantity {
+    width: 60px;
+    text-align: center;
 }
 
 .txt {

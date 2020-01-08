@@ -89,25 +89,5 @@ class dbContext
         }
         return $orders;
     }
-
-    //Order Details View
-    public function orderDetails()
-    {
-        $sql = "SELECT * FROM orderdetails";
-
-        $statement = $this->connection->prepare($sql);
-        $statement->execute();
-        $resultSet = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-        $orders= [];
-
-        if ($resultSet) {
-            foreach ($resultSet as $row) {
-                $order = new $orders($row['OrderID.'], $row['OrderDate'], $row['Name'], $row['Quantity'], $row['Category'], $row['TotalCost']);
-                $orders[] = $order;
-            }
-        }
-        return $orders;
-    }
 }
 

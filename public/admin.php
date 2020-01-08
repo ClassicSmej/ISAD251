@@ -15,17 +15,12 @@ session_start();
         <h3 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">ADMIN</span></h3>
 
         <div class="w3-row w3-center w3-card w3-padding">
-            <a href="javascript:void(0)" onclick="openMenu(event, 'Orders');" id="myLink">
-                <div class="w3-col s6 tablink">Orders</div>
-            </a>
-            <a href="javascript:void(0)" onclick="openMenu(event, 'Products');">
+            <a href="javascript:void(0)" onclick="openMenu(event, 'Products');" id="myLink">
                 <div class="w3-col s6 tablink">Products</div>
             </a>
-        </div>
-
-        <!--ORDERS-->
-        <div id="Orders" class="w3-container admin w3-padding-48 w3-card w3-center">
-            <!-- CALL STORED PROCEDURE TO DISPLAY ORDERS VIEWS -->
+            <a href="javascript:void(0)" onclick="openMenu(event, 'Orders');">
+                <div class="w3-col s6 tablink">Orders</div>
+            </a>
         </div>
 
         <!--PRODUCTS-->
@@ -77,11 +72,11 @@ session_start();
                             <td class='status'>".$status."</td>
                             <td><button type='submit' value='".$productID."' name='EDIT' class='btn-edit w3-round' title='Edit Item'><span class='fa fa-edit'></span></button></td></form>";
 
-                            if ($product->getStatus() == 'On Sale') {
-                                $productString .= "<td><form action='itemForm.php' method='post'><button type='submit' value='".$productID."' name='OFFSALE' class='btn-remove w3-round' title='Remove Item'><span class='fa fa-times-circle'></span></button></form></td>";
-                            } else {
-                                    $productString .= "<td><form action='itemForm.php' method='post'><button type='submit' value='".$productID."' name='ONSALE' class='btn-add w3-round' title='Add Item'><span class='fa fa-plus-square'></span></button></form></td>";
-                            }
+                        if ($product->getStatus() == 'On Sale') {
+                            $productString .= "<td><form action='itemForm.php' method='post'><button type='submit' value='".$productID."' name='OFFSALE' class='btn-remove w3-round' title='Remove Item'><span class='fa fa-times-circle'></span></button></form></td>";
+                        } else {
+                            $productString .= "<td><form action='itemForm.php' method='post'><button type='submit' value='".$productID."' name='ONSALE' class='btn-add w3-round' title='Add Item'><span class='fa fa-plus-square'></span></button></form></td>";
+                        }
                     }
 
                     $productString .= "<form action='itemForm.php' method='post'><tr class='product'><td>N/A</td>
@@ -96,6 +91,51 @@ session_start();
                 echo $productString;
                 ?>
             </table>
+        </div>
+
+        <!--ORDERS-->
+        <div id="Orders" class="w3-container admin w3-padding-48 w3-card w3-center">
+
+                <?php
+                $orderString = "";
+
+                $db = new dbContext();
+                $orders = $db->orderItems();
+
+                if($orders) {
+                    foreach ($orders as $order) {
+                        //product table variables
+                        $orderID = $order->getOrderID();
+                        $productID = $order->getProductID();
+                        $quantity = $order->getQuantity();
+
+                        //HTML for products table
+                        $orderString .= "<div class='product w3-third w3-panel w3-border w3-border-black w3-round-xlarge'>Order ID:".$orderID.
+                            "<br>Product ID: ".$productID."<br>Quantity: ".$quantity."</div>";
+                    }
+                }
+                echo $orderString;
+
+                //DUPLICATE MUST EDIT THIS!!!!
+                $itemString = "";
+
+                $db = new dbContext();
+                $items = $db->orderItems();
+
+                if($orders) {
+                    foreach ($orders as $order) {
+                        //product table variables
+                        $orderID = $order->getOrderID();
+                        $productID = $order->getProductID();
+                        $quantity = $order->getQuantity();
+
+                        //HTML for products table
+                        $orderString .= "<div class='product w3-third w3-panel w3-border w3-border-black w3-round-xlarge'>Order ID:".$orderID.
+                            "<br>Product ID: ".$productID."<br>Quantity: ".$quantity."</div>";
+                    }
+                }
+                echo $orderString;
+                ?>
         </div>
     </div>
     <br>

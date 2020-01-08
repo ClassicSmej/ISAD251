@@ -16,15 +16,15 @@ document.getElementById("myLink").click();
 
 //Basket Functionality
 var addButtons = document.getElementsByClassName('btn-add'); //get add button
-    for (var i = 0; i < addButtons.length; i++){ //loop through all buttons
-        var add = addButtons[i]; //put in array
-        add.addEventListener('click', clickedItem); //add event listener
-    }
+for (var i = 0; i < addButtons.length; i++){ //loop through all buttons
+    var add = addButtons[i]; //put in array
+    add.addEventListener('click', clickedItem); //add event listener
+}
 
 var quantity = document.getElementsByClassName('txt-quantity');
-    for (var j = 0; j < quantity.length; j++) { //loop through all text boxes
-        var input = quantity[j];  //put in array
-        input.addEventListener('change', quantityChanged) //add event listener
+for (var j = 0; j < quantity.length; j++) { //loop through all text boxes
+    var input = quantity[j];  //put in array
+    input.addEventListener('change', quantityChanged) //add event listener
 }
 
 //get data of clicked item
@@ -53,7 +53,7 @@ function addItem(product, price) {
                 <div class="product">
                     <span class="product w3-third">${product}</span>
                     <span class="item-price w3-third">${price}</span>
-                    <span class="quantity w3-third"><input class="txt-quantity" type="number" value="1"> <button type='button' class='btn-remove w3-round'><span class=\"fa fa-times-circle\"></span></button></span>
+                    <span class="quantity w3-third"><input class="txt-quantity" type="number" value="1"> <input type='button' class='btn-remove w3-round' value="X"></span></span>
                 </div><br><br>`;
     basket.append(newitem); //append item to a new div
     newitem.getElementsByClassName('btn-remove')[0].addEventListener('click', removeItem); //add event listener to each remove button

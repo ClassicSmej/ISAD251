@@ -19,6 +19,7 @@ body, html {
     border-color: #3CB371;
     color: white;
     padding: 2px 2px;
+    cursor: pointer;
 }
 
 .btn-checkout {
@@ -27,6 +28,7 @@ body, html {
     border-color: #3CB371;
     color: white;
     padding: 2px 2px;
+    cursor: pointer;
 }
 
 .btn-add {
@@ -35,6 +37,7 @@ body, html {
     border-color: #3CB371;
     color: white;
     padding: 2px 2px;
+    cursor: pointer;
 }
 
 .btn-remove {
@@ -44,6 +47,7 @@ body, html {
     color: white;
     padding: 2px 2px;
     display:inline-block;
+    cursor: pointer;
 }
 
 .btn-edit {
@@ -53,6 +57,7 @@ body, html {
     color: white;
     padding: 2px 2px;
     display:inline-block;
+    cursor: pointer;
 }
 
 .txt-quantity {
@@ -63,4 +68,16 @@ body, html {
 .txt {
     width:150px;
     text-align: center;
+}
+
+.item-price {
+    width:150px;
+    text-align: center;
+    cursor: not-allowed;
+}
+
+.product-txt {
+    width:150px;
+    text-align: center;
+    cursor: not-allowed;
 }

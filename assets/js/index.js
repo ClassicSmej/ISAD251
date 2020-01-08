@@ -51,9 +51,9 @@ function addItem(product, price) {
     // add in new html elements to basket when item added
     newitem.innerHTML = `
                 <div class="product">
-                    <span class="product w3-third">${product}</span>
-                    <span class="item-price w3-third">${price}</span>
-                    <span class="quantity w3-third"><input class="txt-quantity" type="number" value="1"> <input type='button' class='btn-remove w3-round' value="X"></span></span>
+                    <input class="product-txt w3-third" name="PRODUCT" value="${product}" disabled>
+                    <input class="item-price w3-third" name="B.PRICE" value="${price}" disabled>
+                    <span class="quantity w3-third"><input class="txt-quantity" type="number" value="1" name="QUANTITY"> <input type='submit' class='btn-remove w3-round' value="X" title="Remove Item"></span>
                 </div><br><br>`;
     basket.append(newitem); //append item to a new div
     newitem.getElementsByClassName('btn-remove')[0].addEventListener('click', removeItem); //add event listener to each remove button
@@ -83,7 +83,7 @@ function updateTotal() {
     var total = 0; //declare total
     for (var i = 0; i < items.length; i++){ //loop through each product in basket
         var products = items[i]; //get each item from basket
-        var price = parseFloat(products.getElementsByClassName('item-price')[0].innerText); //get price of product and convert to a float
+        var price = parseFloat(products.getElementsByClassName('item-price')[0].value); //get price of product and convert to a float
         var quantity = products.getElementsByClassName('txt-quantity')[0].value; //get quantity of product
         total = total + (price * quantity); //calculate total
     }

@@ -1,7 +1,7 @@
 <?php
 
 include_once'header.php';
-include_once '../src/controller/basketController.php';
+session_start();
 
 ?>
 
@@ -47,6 +47,7 @@ include_once '../src/controller/basketController.php';
             </div>
 
             <!--BASKET ITEMS-->
+            <form action="basketForm.php" method="post">
             <div id="Basket" class="basket w3-container menu w3-padding-48 w3-card w3-center">
                 <div>
                     <b><span class="product-header w3-third w3-border-bottom w3-border-black">Item</span></b>
@@ -60,8 +61,9 @@ include_once '../src/controller/basketController.php';
                     <span class="total-price"></span>
                 </div>
                 <br>
-                <input class="btn-checkout w3-round" type="button" value="CHECKOUT">
+                <button class="btn-checkout w3-round" type="submit" name="CHECKOUT">CHECKOUT <span class="fa fa-credit-card"></span></button>
             </div>
+            </form>
             <br>
         </div>
     </div>

@@ -18,7 +18,7 @@ class orders
         return $this->orderID;
     }
 
-    public function getDate()
+    public function getOrderDate()
     {
         return $this->orderDate;
     }

@@ -30,6 +30,7 @@ session_start();
 
         <!--PRODUCTS-->
         <div id="Products" class="w3-container admin w3-padding-48 w3-card w3-center">
+            <form action='dbFunctions.php' method='post'>
             <table class="products-table w3-table-all w3-centered">
                 <tr>
                     <th>Product ID</th>
@@ -69,32 +70,34 @@ session_start();
                         }
 
                         //HTML for products table
-                        $productString .= "<form action='dbFunctions.php' method='post'><tr class='product'><td class='ID'>".$productID."</td>
-                            <td class='name'><input class='txt' type='text' name='EDITNAME' value='".$name."'></td>
-                            <td class='description'><input class='txt' type='text' name='EDITDES' value='".$description."'></td>
-                            <td class='price'><input class='txt' type='text' name='EDITPRICE' value='".$price."'></td>
-                            <td class='category'><select class='txt' name='EDITCAT'><option>$selectedCategory</option><option>$category</option></td>
-                            <td class='status' name='EDIT STATUS'>".$status."</td>
-                            <td><button type='submit' class='btn-edit w3-round'><span class=\"fa fa-edit\"></span></button></td></form>";
+                        $productString .= "<tr class='product'><td class='ID'>".$productID."</td>
+                            <td class='name'><input class='txt' type='text' name='NAME' value='".$name."'></td>
+                            <td class='description'><input class='txt' type='text' name='DESCRIPTION' value='".$description."'></td>
+                            <td class='price'><input class='txt' type='text' name='PRICE' value='".$price."'></td>
+                            <td class='category'><select class='txt' name='CATEGORY'><option>$selectedCategory</option><option>$category</option></td>
+                            <td class='status'>".$status."</td>
+                            <td><button type='submit' value='".$productID."' name='EDIT' class='btn-edit w3-round' title='Edit Item'><span class='fa fa-edit'></span></button></td>";
 
                             if ($product->getStatus() == 'On Sale') {
-                                $productString .= "<td><form action='dbFunctions.php' method='post'><button type='submit' value='".$productID."' name='REMOVE' class='btn-remove w3-round'><span class=\"fa fa-times-circle\"></span></button></form></td>";
+                                $productString .= "<td><button type='submit' value='".$productID."' name='OFFSALE' class='btn-remove w3-round' title='Remove Item'><span class='fa fa-times-circle'></span></button></td>";
                             } else {
-                                    $productString .= "<td><form action='dbFunctions.php' method='post'><button type='submit' value='".$productID."' name='PUSH' class='btn-add w3-round'><span class=\"fa fa-plus-square\"></span></button></form></td>";
+                                    $productString .= "<td><button type='submit' value='".$productID."' name='ONSALE' class='btn-add w3-round' title='Add Item'><span class='fa fa-plus-square'></span></button></td>";
                             }
                     }
 
-                    $productString .= "<form action='dbFunctions.php' method='post'><tr class='product'><td></td>
-                                <td class='name'><input class='txt' type='text' name='NAME'></td>
-                                <td class='description'><input class='txt' type='text' name='DESCRIPTION'></td>
-                                <td class='price'><input class='txt' type='text' name='PRICE'></td>
-                                <td class='category'><select class='txt' name='CATEGORY'><option>Drink</option><option>Food</option></td>
-                                <td class='status'><select class='txt' name='STATUS'><option>On Sale</option><option>Not on Sale</option></td><td></td>
-                                <td><button type='submit' class='btn-add w3-round'><span class=\"fa fa-plus-square\"></span></button></td></tr>";
+                    $productString .= "<tr class='product'><td>N/A</td>
+                                <td class='name'><input class='txt' type='text' name='NEWNAME'></td>
+                                <td class='description'><input class='txt' type='text' name='NEWDESCRIPTION'></td>
+                                <td class='price'><input class='txt' type='text' name='NEWPRICE'></td>
+                                <td class='category'><select class='txt' name='NEWCATEGORY'><option>Drink</option><option>Food</option></td>
+                                <td class='status'><select class='txt' name='NEWSTATUS'><option>On Sale</option><option>Not on Sale</option></td>
+                                <td>----</td>
+                                <td><button type='submit' class='btn-add w3-round' title='Remove Item'><span class='fa fa-plus-square'></span></button></td></tr>";
                 }
                 echo $productString;
                 ?>
             </table>
+            </form>
         </div>
     </div>
     <br>

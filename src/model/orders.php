@@ -9,7 +9,7 @@ class orders
     public function __construct($OrderID, $OrderDate)
     {
         $this->orderID = $OrderID;
-        $this->orderDate = getdate();
+        $this->orderDate = $OrderDate;
     }
 
     //Getters
@@ -33,6 +33,4 @@ class orders
     {
         $this->orderDate = $orderDate;
     }
-
-
 }

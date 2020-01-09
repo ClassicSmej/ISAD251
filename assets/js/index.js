@@ -31,28 +31,30 @@ for (var j = 0; j < quantity.length; j++) { //loop through all text boxes
 function clickedItem(event) {
     var clicked = event.target; //get clicked button id
     var item = clicked.parentElement.parentElement; //get item data
+    var ID = item.getElementsByClassName('ID')[0].innerText;
     var product = item.getElementsByClassName('products')[0].innerText; //get the item that the button relates to from array
     var price = item.getElementsByClassName('price')[0].innerText; // get the price that the button relates to from array
-    addItem(product, price); //pass to addItem function
+    addItem(product, price, ID); //pass to addItem function
 }
 
 //add item to basket
-function addItem(product, price) {
+function addItem(product, price, ID) {
     var newitem = document.createElement('div'); //create new div for the basket
     newitem.classList.add('item'); //give new div class name
     var basket = document.getElementsByClassName('basket-items')[0]; //get current basket - will be empty on load
-    var item = document.getElementsByClassName('product');
+    var item = document.getElementsByClassName('product-txt');
     for (var i = 0; i < item.length; i++) { //loop though basket
-        if (item[i].innerText === product) { //check if item is already in basket
+        if (item[i].value === product) { //check if item is already in basket
             alert('This item is already in your basket'); //if true; don't add & alert user
             return
         }
     }
-    // add in new html elements to basket when item added
+    //add in new html elements to basket when item added
     newitem.innerHTML = `
-                <div class="product">
-                    <input class="product-txt w3-third" name="PRODUCT" value="${product}" disabled>
-                    <input class="item-price w3-third" name="B.PRICE" value="${price}" disabled>
+                <div class="product" name="BASKET">
+                    <span class="txt w3-quarter" name="ID" style='display:none'>${ID}</span>
+                    <input class="product-txt w3-third" name="NAME" value="${product}" disabled>
+                    <input class="item-price w3-third" name="PRICE" value="${price}" disabled>
                     <span class="quantity w3-third"><input class="txt-quantity" type="number" value="1" name="QUANTITY"> <input type='submit' class='btn-remove w3-round' value="X" title="Remove Item"></span>
                 </div><br><br>`;
     basket.append(newitem); //append item to a new div

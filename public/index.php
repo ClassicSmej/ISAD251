@@ -35,10 +35,16 @@ session_start();
                 if($products)
                 {
                     foreach ($products as $product) {
-                        if ($product->getStatus() == 'On Sale'){
-                            $productString .= "<div class='item'><h5 class='products'>".$product->getName().
-                                "<input class='btn-add w3-round w3-right' type='button' value='ADD'></h5><p class='description w3-text-grey'>
-                        <span class='price w3-right w3-tag w3-dark-grey w3-round'>".$product->getPrice()."</span>".$product->getDescription()."</p><br></div>";
+                        //product table variables
+                        $status = $product->getStatus();
+                        $name = $product->getName();
+                        $price = $product->getPrice();
+                        $description = $product->getDescription();
+
+                        if ($status == 'On Sale'){
+                            $productString .= "<div class='item'><h5 class='products'><span class='ID' style='display:none'>".$product->getProductID()."</span>
+                                ".$name."<input class='btn-add w3-round w3-right' type='button' value='ADD'></h5><p class='description w3-text-grey'>
+                        <span class='price w3-right w3-tag w3-dark-grey w3-round'>".$price."</span>".$description."</p><br></div>";
                         }
                     }
                 }

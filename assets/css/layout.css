@@ -32,7 +32,7 @@ body, html {
 }
 
 .btn-add {
-    width: 75px;
+    width: 80px;
     background-color: #3CB371;
     border-color: #3CB371;
     color: white;
@@ -41,7 +41,7 @@ body, html {
 }
 
 .btn-remove {
-    width: 75px;
+    width: 80px;
     background-color: red;
     border-color: red;
     color: white;
@@ -51,7 +51,7 @@ body, html {
 }
 
 .btn-edit {
-    width: 75px;
+    width: 80px;
     background-color: orange;
     border-color: orange;
     color: white;

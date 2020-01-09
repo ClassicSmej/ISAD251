@@ -30,7 +30,7 @@ class dbContext
         }
     }
 
-    //Products table
+    //products table
     public function Products()
     {
         $sql = "SELECT * FROM `products`";
@@ -50,7 +50,7 @@ class dbContext
         return $products;
     }
 
-    //Order Items Table
+    //order items table
     public function orderItems()
     {
         $sql = "SELECT * FROM `orderitems`";
@@ -63,14 +63,14 @@ class dbContext
 
         if ($resultSet) {
             foreach ($resultSet as $row) {
-                $order = new orderItems($row['ItemNo.'], $row['OrderID'], $row['Quantity'], $row['ProductID']);
+                $order = new orderItems($row['ItemNo.'], $row['OrderID'], $row['ProductID'], $row['Quantity']);
                 $orderItems[] = $order;
             }
         }
         return $orderItems;
     }
 
-    //Orders Table
+    //orders Table
     public function Orders()
     {
         $sql = "SELECT * FROM `orders`";
@@ -83,7 +83,49 @@ class dbContext
 
         if ($resultSet) {
             foreach ($resultSet as $row) {
-                $order = new orders($row['OrderID.'], $row['OrderDate']);
+                $order = new orders($row['OrderID'], $row['OrderDate']);
+                $orders[] = $order;
+            }
+        }
+        return $orders;
+    }
+
+    //order details view
+    public function orderDetails()
+    {
+        $sql = "SELECT * FROM `orderdetails`";
+
+        $statement = $this->connection->prepare($sql);
+        $statement->execute();
+        $resultSet = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        $orders = [];
+
+        if ($resultSet) {
+            foreach ($resultSet as $row) {
+                $order = new details($row['ItemID.'], $row['OrderID'], $row['OrderDate'], $row['ProductID'], $row['Name'], $row['Quantity'], $row['TotalCost']);
+                $orders[] = $order;
+            }
+        }
+        return $orders;
+    }
+
+    //searching for an order
+    public function searchOrder()
+    {
+        $orderID = $_REQUEST['ORDERID'];
+
+        $sql = "SELECT * FROM `orderitems` WHERE OrderID = '$orderID'";
+
+        $statement = $this->connection->prepare($sql);
+        $statement->execute();
+        $resultSet = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        $orders = [];
+
+        if ($resultSet) {
+            foreach ($resultSet as $row) {
+                $order = new orderItems($row['ItemNo.'], $row['OrderID'], $row['ProductID'], $row['Quantity']);
                 $orders[] = $order;
             }
         }

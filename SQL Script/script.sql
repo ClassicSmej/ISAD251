@@ -32,7 +32,7 @@ create table orderitems
 	constraint fk_products foreign key (ProductID) references products (ProductID)
 );
 
-create view orderdetails as select `isad251_jwhite`.`orderitems`.`ItemID`                                                AS `ItemID`,
+create view orderdetails as select `isad251_jwhite`.`orderitems`.`ItemID` AS `ItemID`,
        `isad251_jwhite`.`orders`.`OrderID` AS `OrderID`,
        `isad251_jwhite`.`orders`.`OrderDate` AS `OrderDate`,
        `isad251_jwhite`.`orderitems`.`ProductID` AS `ProductID`,

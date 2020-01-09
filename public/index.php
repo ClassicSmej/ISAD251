@@ -53,7 +53,6 @@ session_start();
             </div>
 
             <!--BASKET ITEMS-->
-            <form action="basketForm.php" method="post">
             <div id="Basket" class="basket w3-container menu w3-padding-48 w3-card w3-center">
                 <div>
                     <b><span class="product-header w3-third w3-border-bottom w3-border-black">Item</span></b>
@@ -67,9 +66,8 @@ session_start();
                     <span class="total-price"></span>
                 </div>
                 <br>
-                <button class="btn-checkout w3-round" type="submit" name="CHECKOUT">CHECKOUT <span class="fa fa-credit-card"></span></button>
+                <button class="btn-checkout w3-round" type="button" name="CHECKOUT">CHECKOUT <span class="fa fa-credit-card"></span></button>
             </div>
-            </form>
             <br>
         </div>
     </div>

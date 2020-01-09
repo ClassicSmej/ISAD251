@@ -5,7 +5,7 @@ session_start();
 
 ?>
 
-<body>
+<body
 
 <div class="w3-light-grey w3-large">
 

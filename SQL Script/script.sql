@@ -66,4 +66,12 @@ CREATE VIEW `isad251_jwhite`.`orderdetails` AS
     GROUP BY `isad251_jwhite`.`orderitems`.`ItemID`;
 END
 
-
+CREATE TRIGGER adminChange
+AFTER INSERT
+ON products FOR EACH ROW
+    INSERT INTO auditTable
+    SET action = 'update',
+    ProductID = productID,
+	ProductName = productName, 
+    AlertDate = NOW(), 
+    AlertType = 'Admin Change';

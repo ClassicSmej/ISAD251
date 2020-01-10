@@ -18,6 +18,7 @@ session_start();
                 <div class="w3-col s6 tablink">Orders</div>
             </a>
         </div>
+
         <!--PRODUCTS-->
         <div id="Products" class="w3-container admin w3-padding-48 w3-card w3-center">
             <table class="products-table w3-table-all w3-centered">
@@ -85,6 +86,7 @@ session_start();
                 ?>
             </table>
         </div>
+
         <!--ORDERS-->
         <div id="Orders" class="w3-container admin w3-padding-48 w3-card w3-center">
             <?php
@@ -119,6 +121,7 @@ session_start();
 <?php
 include_once('footer.php')
 ?>
+
 <script>
     //Tabbed Menu - W3 Schools
     function openMenu(evt, menuName) {
@@ -136,4 +139,5 @@ include_once('footer.php')
     }
     document.getElementById("myLink").click();
 </script>
+
 </body>

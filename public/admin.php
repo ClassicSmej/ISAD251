@@ -1,8 +1,6 @@
 <?php
-
 include_once'header.php';
 session_start();
-
 ?>
 
 <body
@@ -11,9 +9,7 @@ session_start();
 
     <div class="w3-container" id="admin">
         <div class="w3-content" style="min-width: 1250px; max-width: 1250px"">
-
         <h3 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">ADMIN</span></h3>
-
         <div class="w3-row w3-center w3-card w3-padding">
             <a href="javascript:void(0)" onclick="openMenu(event, 'Products');" id="myLink">
                 <div class="w3-col s6 tablink">Products</div>
@@ -22,7 +18,6 @@ session_start();
                 <div class="w3-col s6 tablink">Orders</div>
             </a>
         </div>
-
         <!--PRODUCTS-->
         <div id="Products" class="w3-container admin w3-padding-48 w3-card w3-center">
             <table class="products-table w3-table-all w3-centered">
@@ -36,10 +31,8 @@ session_start();
                     <th>Edit</th>
                     <th>Remove/Add</th>
                 </tr>
-
                 <?php
                 $productString = "";
-
                 $db = new dbContext();
                 $products = $db->Products();
 
@@ -92,45 +85,40 @@ session_start();
                 ?>
             </table>
         </div>
-
         <!--ORDERS-->
         <div id="Orders" class="w3-container admin w3-padding-48 w3-card w3-center">
-                <?php
-                    $orderString = "";
+            <?php
+            $orderString = "";
+            $db = new dbContext();
 
-                    $db = new dbContext();
-                    $orders = $db->Orders();
-                    $items = $db->orderItems();
+            $orders = $db->Orders();
+            $items = $db->orderItems();
 
-                    if($orders) {
-                        foreach ($items as $item) {
-                            foreach ($orders as $order) {
-                                //orders table variables
-                                $orderID = $order->getOrderID();
-                                $orderDate = $order->getOrderDate();
-
-                                $itemID = $item->getOrderID();
-                                $productID = $item->getProductID();
-                                $quantity = $item->getQuantity();
-
-                                if ($orderID == $itemID) {
-                                    $orderString .= "<div class='w3-round w3-third w3-border w3-border-black' style='text-align: left'><b> Order ID: </b>".$orderID. "<br><b>Order Date: </b>".$orderDate."<br>
+            if($orders) {
+                foreach ($items as $item) {
+                    foreach ($orders as $order) {
+                        //orders table variables
+                        $orderID = $order->getOrderID();
+                        $orderDate = $order->getOrderDate();
+                        $itemID = $item->getOrderID();
+                        $productID = $item->getProductID();
+                        $quantity = $item->getQuantity();
+                        if ($orderID == $itemID) {
+                            $orderString .= "<div class='w3-round w3-third w3-border w3-border-black' style='text-align: left'><b> Order ID: </b>".$orderID. "<br><b>Order Date: </b>".$orderDate."<br>
                                         <b>Product ID: </b>".$productID."<br><b>Quantity: </b>".$quantity."</div>";
-                                }
-                            }
                         }
                     }
-                    echo $orderString;
-                    ?>
+                }
+            }
+            echo $orderString;
+            ?>
         </div>
     </div>
     <br>
 </div>
-
 <?php
 include_once('footer.php')
 ?>
-
 <script>
     //Tabbed Menu - W3 Schools
     function openMenu(evt, menuName) {
@@ -148,5 +136,4 @@ include_once('footer.php')
     }
     document.getElementById("myLink").click();
 </script>
-
 </body>

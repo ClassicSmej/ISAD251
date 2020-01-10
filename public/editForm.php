@@ -18,3 +18,4 @@ $statement = $db->connection->prepare($sql);
 $statement->execute();
 
 header("Location: admin.php");
+

@@ -55,3 +55,10 @@ Welcome to the repository for a pub ordering application. This application is de
 
 <h4>Admin - Orders</h4>
 <img src="assets/img/adminorders.jpg">
+
+<h3>Multiple Browsers</h3>
+<h4>Google Chrome</h4>
+<img src="assets/img/chrome.PNG">
+
+<h4>Microsoft Edge</h4>
+<img src="assets/img/edge.PNG">

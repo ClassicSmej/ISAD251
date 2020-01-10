@@ -35,3 +35,30 @@ Welcome to the repository for a pub ordering application. This application is de
 <strong>Reviewing orders:</strong><p>To review all orders, the user can select the 'orders' tab next to 'products' at the top and then all orders will be displayed to the admin.</p>
 
 <h3>Screenshots</h3>
+<h4>Home Page</h4>
+<img src="assets/img/home.jpg">
+
+<h4>Menu</h4>
+<img src="assets/img/menu.jpg">
+
+<h4>Basket</h4>
+<img src="assets/img/basket.jpg">
+
+<h4>Order Search</h4>
+<img src="assets/img/orders.jpg">
+
+<h4>Order History</h4>
+<img src="assets/img/orderview.jpg">
+
+<h4>Admin - Products</h4>
+<img src="assets/img/products.jpg">
+
+<h4>Admin - Orders</h4>
+<img src="assets/img/adminorders.jpg">
+
+<h3>Multiple Browsers</h3>
+<h4>Google Chrome</h4>
+<img src="assets/img/chrome.PNG">
+
+<h4>Microsoft Edge</h4>
+<img src="assets/img/edge.PNG">

@@ -35,3 +35,5 @@ Welcome to the repository for a pub ordering application. This application is de
 <strong>Reviewing orders:</strong><p>To review all orders, the user can select the 'orders' tab next to 'products' at the top and then all orders will be displayed to the admin.</p>
 
 <h3>Screenshots</h3>
+![Home Page](ISAD251/assets/img/home.PNG)
+

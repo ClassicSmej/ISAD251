@@ -1,4 +1,7 @@
-<h1>ISAD251</h1>  
+<h1>ISAD251</h1>
+
+### SQL Database no longer functioning - Only code example
+
 <p> My Repository for demonstrating ISAD251 database application development
         
 Welcome to the repository for a pub ordering application. This application is designed to allow customers to order items from a menu and staff to see what customers have ordered and edit a menu for items that are on sale.</p>
